@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+이벤트는 사용자의 입력 행위를 브라우저가 웹 페이지에 전달하는 수단이다.
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>script 태그에 자바스크립트 작성</title>
+    <script>
+        function over(obj) {
+            obj.src = "media/banana.jpeg";
+        }
+        function out(obj) {
+            obj.src = "media/apple.jpeg";
+        }
+    </script>
+</head>
+<body>
+    <h3>마우스 올려 보세요</h3>
+    <hr>
+    <img src = "media/apple.jpeg" alt="이미지"
+        onmouseover="over(this)"
+        onmouseout="out(this)">
+</body>
+</html>

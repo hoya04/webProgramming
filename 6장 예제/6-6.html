@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수 선언</title>
+</head>
+<body>
+    <h3>변수 선언, 전역/지역/블록 변수</h3>
+    <hr>
+    <script>
+        let x; //전역변수 선언
+        function f() {
+            let y;// 지역변수 선언
+            x = 10;
+            y = 20;
+            z = 30;//아무 키워드 없이 선언된 변수는 전역변수로 취급
+            if(y == 20) {
+                let b = 40;//새로운 블록변수 선언(if문 안에서만 사용)
+                b++;
+                document.write("if 블록 내 블록변수 b = " + b + "<br>");
+            }
+            //이곳에서는 블록변수 b에 접근할 수 없음
+            //이곳에서는 x,y,z 모두 접근 가능
+            document.write("함수 f() 내 지역변수 y = " + y + "<br>");
+        }
+        f();
+        document.write("전역변수 x = " + x + "<br>" );
+        document.write("전역변수 z = " + z + "<br>");
+        //이곳에서는 변수 x와 z만 접근할 수 있음 지역변수와 블록변수는 접근 불가
+    </script>
+</body>
+</html>
