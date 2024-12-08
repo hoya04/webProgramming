@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>eval()로 수식 계산</h3>
+    <hr>
+    <script>
+        let n = prompt("수식 입력",0);
+        if(n == null){
+            alert("입력된 식이 없습니다.");
+        }else{
+            let res = eval(n);
+            document.write(n + " = " + res);
+        }
+    </script>
+</body>
+</html>
