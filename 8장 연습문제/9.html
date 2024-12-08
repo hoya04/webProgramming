@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function add(parent){
+            let text = prompt("라면을 끓이는 순서를 입력하라.");
+            if(text == null || text == ""){
+                return;
+            }
+            let obj = document.createElement("li");
+            obj.innerHTML = text;
+            parent.appendChild(obj);
+            
+        }
+    </script>
+</head>
+<body>
+    <h3>라면을 끓이는 순서</h3>
+    <hr>
+    <ol type="A" onclick="add(this)" style="background-color: yellowgreen;">
+        <li>물을 끓인다.</li>
+    </ol>
+</body>
+</html>
