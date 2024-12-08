@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function load(URL){
+            newWin = window.open(URL,"myWin", "left = 300,top = 300, width = 400, height = 300");
+        }
+        function closeNewWindow() {
+            if(newWin==null || newWin.closed)
+                return;
+            else
+                newWin.close();
+        }
+    </script>
+</head>
+<body>
+    <h3>window.open()으로 윈도우 열기</h3>
+    <hr>
+    <a href="javascript:load('http://www.graceland.com')">엘비스 프레슬리 홈페이지</a><br>
+    <a href="javascript:load('http://www.universalorlando.com')">유니버셜 올랜드 홈페이지</a><br>
+    <a href="javascript:window.close()">현재 윈도우 닫기</a><br>
+    <a href="javascript:closeNewWindow()">새 윈도우 닫기</a>
+</body>
+</html>
