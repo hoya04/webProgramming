@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시작과 끝 숫자를 전달받아 합을 구하는 워커 태스크</title>
+</head>
+<body>
+    <h3>시작과 끝 숫자를 전달받아 합을 구하는 워커 태스크</h3>
+    <hr>
+    <input id="from" type="text" size="10"> ~
+    <input type="text" id="to" size="10"> = 
+    <input type="text" id="sum" size="10">
+    <button type="button" id="add" onclick="send()">add</button>
+    <script>
+        //addworker 워커 객체 생성 및 워커 태스크 시작
+    let addWorker = new Worker("add.js");
+    function send() {
+        let parameters = {    
+            from: document.getElementById("from").value,
+            to: document.getElementById("to").value
+    };
+    addWorker.postMessage(parameters);
+}
+        //워크 태스크로부터 message 이벤트 수신
+        addWorker.onmessage = function(e) {
+            //이벤트 객체의 data 출력
+            document.getElementById("sum").value = e.data;
+        }
+    </script>
+</body>
+</html>
