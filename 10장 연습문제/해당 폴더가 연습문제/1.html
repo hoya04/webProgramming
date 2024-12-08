@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function print() {
+        let newWin = window.open("","", "left = 500, top = 400");
+        newWin.document.title = "환영";
+        newWin.document.body.style.backgroundColor = "yellowgreen";
+        newWin.document.write("접속 감사합니다.");
+        newWin.document.close();
+        }
+        </script>
+</head>
+<body onload="print()">
+    <h3>HTML5</h3>
+    <hr>
+    HTML5를 학습하는 사이트 입니다.
+</body>
+</html>
