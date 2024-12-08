@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>watchPosition()으로 반복 위치 서비스</title>
+</head>
+<body>
+    <h3>watchPosition()으로 반복위치 서비스</h3>
+    <hr>
+    <div id="msg">이곳에 위치 정보 출력</div>
+    <iframe id="map" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br>
+    <script>
+        let options = {//watchPosition()의 마지막 매개변수로 전달할 객체
+            enableHighAccuracy: false,
+            timeout: 5000,
+            maximumAge: 0
+        };
+        let count = 0;//반복 위치 서비스가 호출되는 횟수
+        let watchID;
+
+        if(navigator.geolocation) {
+            //changed()콜백 함수를 등록하고, 반복 위치 서비스 시작
+            watchID = navigator.geolocation.watchPosition(changed, null, options);
+        }else{
+            alert("지원하지 않음");
+        }
+
+        //위치가 바뀌면 changed()가 호출되고, 위치 정보가 들어있는 position 객체가 매개 변수로 넘어온다.
+        function changed(position) {
+            if(count==5){//cleatWatch() 테스트를 위해 5번만 서비스
+                navigator.geolocation.clearWatch(watchID);
+                document.getElementById("msg").innerHTML="위치 서비스 종료";
+                return;
+            }
+            // 위도와 경도의 소수점 이하 자리가 너무 길어 유요 숫자 6자리로 자름
+        lat = lat.toPrecision(6);
+        lon = lon.toPrecision(6);
+        let now = new Date();
+        let text = '현재 시간' + now.toUTCString() + '<br>';
+        text += '현재위치 ( 위도 ' + lat + ', 경도  ' + lon + ')<br>';
+        text += '정확도 ' + acc + 'm<br>';
+        document.getElementById('msg').innerHTML = text;
+
+        let map = document.getElementById("map");
+        map.src = "https://www.openstreetmap.org/export/embed.html?bbox=" +
+        (parseFloat(lon)-0.01) + "%2C" + (parseFloat(lat)-0.01) + "%2C" +
+        (parseFloat(lon)+0.01) + "%2C" + (parseFloat(lat)+0.01);
+        //lat,lon은 문자열이므로 숫자로 바꾸기 위해 parseFloat()
+        count++;
+        }
+    </script>
+</body>
+</html>
